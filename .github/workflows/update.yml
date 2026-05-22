@@ -1,0 +1,39 @@
+name: Update cuDNN manifests
+
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update manifests from NVIDIA redist metadata
+        shell: pwsh
+        run: ./bin/update-cudnn.ps1
+
+      - name: Validate JSON manifests
+        shell: pwsh
+        run: |
+          Get-ChildItem bucket/*.json | ForEach-Object {
+            Get-Content -Raw $_.FullName | ConvertFrom-Json | Out-Null
+            Write-Host "Valid JSON: $($_.Name)"
+          }
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: update cuDNN manifests'
+          title: 'chore: update cuDNN manifests'
+          body: 'Automated update from NVIDIA cuDNN redist metadata.'
+          branch: bot/update-cudnn
+          delete-branch: true
