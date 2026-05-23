@@ -18,7 +18,7 @@ function Get-LatestCudnnReleaseForCudaVariant {
         Select-Object -Unique
 
     foreach ($label in $labels) {
-        $jsonUrl = "$RootUrl`redistrib_$label.json"
+        $jsonUrl = "${RootUrl}redistrib_${label}.json"
         $json = Invoke-RestMethod -Uri $jsonUrl
         $artifact = $json.cudnn.'windows-x86_64'.$CudaVariant
         if ($null -ne $artifact) {
