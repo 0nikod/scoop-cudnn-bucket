@@ -1,5 +1,5 @@
 {
-  "version": "9.22.0.52",
+  "version": "9.26.0.51",
   "description": "NVIDIA CUDA Deep Neural Network library (cuDNN) for CUDA 13 on Windows x86_64.",
   "homepage": "https://developer.nvidia.com/cudnn",
   "license": {
@@ -8,9 +8,9 @@
   },
   "architecture": {
     "64bit": {
-      "url": "https://developer.download.nvidia.com/compute/cudnn/redist/cudnn/windows-x86_64/cudnn-windows-x86_64-9.22.0.52_cuda13-archive.zip",
-      "hash": "11f714ad2699f1d548546fe8797ca563c498d4c66d5a4e9b6c2948325ca8da7d",
-      "extract_dir": "cudnn-windows-x86_64-9.22.0.52_cuda13-archive"
+      "url": "https://developer.download.nvidia.com/compute/cudnn/redist/cudnn/windows-x86_64/cudnn-windows-x86_64-9.26.0.51_cuda13-archive.zip",
+      "hash": "f8610d403685c918e690de5b1ec68da0b4b1358a6be62627591362b7eb811644",
+      "extract_dir": "cudnn-windows-x86_64-9.26.0"
     }
   },
   "env_add_path": "bin\\x64",
@@ -39,3 +39,4 @@
     "If an application requires DLLs next to CUDA Toolkit binaries, copy the DLLs manually instead of overwriting files blindly."
   ]
 }
+
